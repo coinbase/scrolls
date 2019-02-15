@@ -300,8 +300,9 @@ module Scrolls
 
     def log_level_ok?(level)
       if level
+        level = level.to_s
         raise LogLevelError, "Log level unknown" unless LOG_LEVEL_MAP.key?(level)
-        LOG_LEVEL_MAP[level.to_s] <= LOG_LEVEL
+        LOG_LEVEL_MAP[level] <= LOG_LEVEL
       else
         true
       end
