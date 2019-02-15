@@ -4,11 +4,11 @@ module Scrolls
   module Parser
     extend self
 
-    def parse(data)
+    def parse(data, escape_keys=false)
       result = {}
 
-      data.map do |(k,v)|
-        key = k
+      data.map do |(key,v)|
+        key = Scrolls::Utils.escape_chars(key) if escape_keys
 
         if key.is_a?(Symbol)
           key = key.to_s
